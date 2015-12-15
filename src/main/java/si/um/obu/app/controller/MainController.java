@@ -25,7 +25,8 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String tokenSubmit(@ModelAttribute @Valid Token token, BindingResult bindingResult, Model model) {
-        log.info("tokenSubmit method params: token = [" + token + "], bindingResult = [" + bindingResult + "], model = [" + model + "]");
+        log.info("tokenSubmit method params: token = [" + token + "], bindingResult = [" +
+                bindingResult + "], model = [" + model + "]");
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("token", token);
