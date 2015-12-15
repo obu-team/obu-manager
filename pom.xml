@@ -97,7 +97,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>-Dspring.profiles.active=dev</argLine>
+                            <argLine>-Dspring.profiles.active=test</argLine>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -120,7 +120,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <argLine>-Dspring.profiles.active=dev</argLine>
+                            <argLine>-Dspring.profiles.active=pro</argLine>
                         </configuration>
                     </plugin>
                 </plugins>
