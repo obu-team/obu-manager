@@ -1,4 +1,5 @@
 # OBU app #
-School project which simulate dashboard for On Board Unit (OBU) in cars.
+School project which simulate dashboard for On Board Unit (OBU) in cars. See also [OBU-module](https://github.com/obu-team/obu) project for more info.
 
-[![wercker status](https://app.wercker.com/status/2b5d27c96875816d48812abf1da7247a/m "wercker status")](https://app.wercker.com/project/bykey/2b5d27c96875816d48812abf1da7247a)
+## Deployment and build status ##
+[![wercker status](https://app.wercker.com/status/27d77f4baecb25fc2770c22cd21a6757/m "wercker status")](https://app.wercker.com/project/bykey/27d77f4baecb25fc2770c22cd21a6757)
