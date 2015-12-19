@@ -41,8 +41,12 @@ public class MainController {
         model.addAttribute("token", token);
         model.addAttribute("msg", new Message(Message.MessageType.ERROR, "OBU with given token does not exist!"));
 
-        return "token-view";
+        return "redirect:/" + token.getValue();
     }
 
+    @RequestMapping(value = "/{obuId}", method = RequestMethod.GET)
+    public String homeView() {
+        return "home-view";
+    }
 
 }

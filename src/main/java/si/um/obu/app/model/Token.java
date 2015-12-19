@@ -1,10 +1,15 @@
 package si.um.obu.app.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Token {
 
-    @Size(min = 1)
+    @Size(min = 24, max = 24)
+    @NotNull
+    @NotEmpty
     private String value;
 
     public Token() {
