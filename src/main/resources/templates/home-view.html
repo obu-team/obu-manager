@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>OBU - home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>OBU home view</h1>
+
+
+    <h2>OBU location</h2>
+    <ul>
+        <li>Latitude: <span th:text="${location.lat}"></span></li>
+        <li>Longitude: <span th:text="${location.lon}"></span></li>
+    </ul>
+
+
+    <h2>Car parameters</h2>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${params}">
+                <td th:text="${item.key}"></td>
+                <td th:text="${item.value}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Drive History</h2>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Distance</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="route,iterationStatus  : ${driveHistory}">
+                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${route.distance}">m</td>
+                <td th:text="${route.duration}">sec</td>
+                <td><a th:href="@{__${#httpServletRequest.requestURI}__/driveHistory/__${route.id}__}">Detail View</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

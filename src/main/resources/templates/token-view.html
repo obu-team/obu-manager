@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>OBU - input token</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <h1>Input token</h1>
+
+    <!-- Če je msg objekt nastavljen izpiše tip in vsebino sporočila -->
+    <div th:if="${msg != null}">
+        <h3 th:text="${msg.type}" />
+        <p th:text="${msg.content}" />
+    </div>
+
+    <h2>Token:</h2>
+    <form action="#" th:action="@{/}" th:object="${token}" method="post" >
+        <p><input type="text" th:field="*{value}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+
+</body>
+</html>
