@@ -11,12 +11,12 @@ $(function() {
 	});
 	currentLocation.Load();
 
-	var drivenPath = new Maplace({
-    map_div: '#drivenPath',
-    generate_controls: false,
-    show_markers: false,
-    type: 'directions',
-    draggable: true
+	/*var drivenPath = new Maplace({
+		map_div: '#drivenPath',
+		generate_controls: false,
+		show_markers: false,
+		type: 'directions',
+		draggable: true
 	});
 	drivenPath.Load();
 
@@ -88,17 +88,17 @@ $(function() {
 		});
 	},function(err) {
 		resizeTable();
-	});
+	});*/
 
-	$(document).on('click','button[changePath]',function() {
+	/*$(document).on('click','button[changePath]',function() {
 		var pathID = $(this).attr('changePath')*1;
 		var path = _.findWhere(paths,{id:pathID});
 		drivenPath.RemoveLocations([0,1],false);
 		drivenPath.AddLocation(path.start,0,false);
 		drivenPath.AddLocation(path.end,1,true);
-	});
+	});*/
 
-	$("input[name=pathSearch]").on('input',function() {
+	/*$("input[name=pathSearch]").on('input',function() {
 		var src = $(this).val();
 		if($.trim(src).length) {
 			var srcPaths = $('.row:contains("'+src+'")','.table#drivenPathTable');
@@ -113,5 +113,5 @@ $(function() {
 		} else {
 			$('.row','.table#drivenPathTable').show();
 		}
-	});
+	});*/
 })

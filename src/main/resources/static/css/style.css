@@ -536,6 +536,10 @@ main .container .divide.right {
     box-sizing:border-box;
 }
 
+.card.hidden {
+    display:none;
+}
+
 .card.iframe {
     height: 542px;
 }
@@ -881,6 +885,10 @@ main .container .divide.right {
     cursor:pointer;
     font-size:.8em;
     border-radius:3px;
+}
+
+.table .row .col.loader {
+    padding:30px 0;
 }
 
 /*SEARCHES*/
