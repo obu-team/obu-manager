@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import si.um.obu.app.model.GeoLocation;
 import si.um.obu.app.model.Message;
 import si.um.obu.app.model.Token;
 import si.um.obu.app.model.Track;
@@ -53,22 +54,21 @@ public class MainController {
 
     @RequestMapping(value = "/{obuId}", method = RequestMethod.GET)
     public String homeView(@PathVariable("obuId") String OBUId, Model model) {
-        model.addAttribute("location", obuService.getOBULocation(OBUId));
         model.addAttribute("params", obuService.getCarParamterValues(OBUId));
         return "home-view";
     }
 
-    @RequestMapping(value = "/{obuId}/driveHistory/{trackId}", method = RequestMethod.GET)
-    public String routeView(@PathVariable("obuId") String OBUId, @PathVariable("trackId") String trackId, Model model) {
-        model.addAttribute("trackId", trackId);
-        model.addAttribute("obuId", OBUId);
-        return "route-view";
-    }
 
     @ResponseBody
     @RequestMapping(value = "/{obuId}/driveHistory", method = RequestMethod.GET)
     public List<Track> getCarDriveHistory(@PathVariable("obuId") String OBUId) {
         return obuService.getCarDriveHistory(OBUId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{obuId}/location", method = RequestMethod.GET)
+    public GeoLocation getCarLocation(@PathVariable("obuId") String OBUId) {
+        return obuService.getOBULocation(OBUId);
     }
 
 }
