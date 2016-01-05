@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>OBU - input token</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Oburer</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel='stylesheet' href='css/simple-line-icons.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel='stylesheet' href='css/style.css' />
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
-
-    <h1>Input token</h1>
-
-    <!-- Če je msg objekt nastavljen izpiše tip in vsebino sporočila -->
-    <div th:if="${msg != null}">
-        <h3 th:text="${msg.type}" />
-        <p th:text="${msg.content}" />
+    <div class="fullPage">
+        <div class='picDivider'>
+            <div class='picContainer'>
+                <div class='pic'>
+                    <div class="centerBlock">
+                        <div class="centerContent">
+                            <h1>Prijava</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='contentContainer'>
+                <div class="centerBlock">
+                    <div class="centerContent">
+                        <h4>Prijava v sistem</h4>
+                        <p></p>
+                        <div class="notification warning" th:if="${msg != null}"><p th:text="${msg.content}" /></div>
+                        <form action="#" th:action="@{/}" th:object="${token}" method="post">
+                            <input type="text" th:field="*{value}" placeholder="Obu ID" />
+                            <button>Prijava</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <h2>Token:</h2>
-    <form action="#" th:action="@{/}" th:object="${token}" method="post" >
-        <p><input type="text" th:field="*{value}" /></p>
-        <p><input type="submit" value="Submit" /></p>
-    </form>
-
 </body>
 </html>

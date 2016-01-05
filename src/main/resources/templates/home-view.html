@@ -1,54 +1,93 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>OBU - home</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Oburer</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel='stylesheet' href='css/simple-line-icons.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel='stylesheet' href='css/style.css' />
+
+    <script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/async/1.5.1/async.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/maplace.js"></script>
 </head>
-<body>
-    <h1>OBU home view</h1>
-
-
-    <h2>OBU location</h2>
-    <ul>
-        <li>Latitude: <span th:text="${location.lat}"></span></li>
-        <li>Longitude: <span th:text="${location.lon}"></span></li>
-    </ul>
-
-
-    <h2>Car parameters</h2>
-    <table border="1px">
-        <thead>
-            <tr>
-                <th>Parameter</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="item : ${params}">
-                <td th:text="${item.key}"></td>
-                <td th:text="${item.value}"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Drive History</h2>
-    <table border="1px">
-        <thead>
-            <tr>
-                <th>&nbsp;</th>
-                <th>Distance</th>
-                <th>Duration</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="route,iterationStatus  : ${driveHistory}">
-                <td th:text="${iterationStatus.count}"></td>
-                <td th:text="${route.distance}">m</td>
-                <td th:text="${route.duration}">sec</td>
-                <td><a th:href="@{__${#httpServletRequest.requestURI}__/driveHistory/__${route.id}__}">Detail View</a></td>
-            </tr>
-        </tbody>
-    </table>
+<body class="min">
+    <nav>
+        <button class='header'>Obu<span class='bold'>Rer</span></button>
+        <ul>
+            <li><i class='icon-speedometer'></i> <span>Dashboard</span></li>
+            <li><i class='icon-phone'></i> <span>Pokliči avtovleko</span></li>
+            <li><i class='icon-user'></i> <span>Avtomehanik</span></li>
+        </ul>
+    </nav>
+    <header>
+        <div class='left'>
+            <button class='toggleMenu'><i class='icon-menu'></i></button>
+        </div>
+        <div class='right'>
+            <button><!--
+                        --><div class="avatar">JD</div>
+                John Doe
+            </button>
+            <a href="index.html"><button><i class='icon-power'></i></button></a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="divide left">
+                <div class='card contact'><div class="centerBlock"><div class="centerContent"><button class="avatar">JD</button><br/><div class="name">John Doe</div><div class="loc"><i class='icon-location-pin'></i> Fake Street 123, Springfield, USA</div></div></div></div>
+                <div class="card">
+                    <div class="header indigo"><i class="icon-graph"></i> Stanje vozila</div>
+                    <ul>
+                        <li th:each="item : ${params}"><button class="icon blue"><i class="icon-chemistry"></i></button><div class="key" th:text="${item.key}"></div><div class="value" th:text="${#numbers.formatDecimal(item.value, 0, 'COMMA', 2, 'POINT')}"></div></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="header indigo"><i class="icon-location-pin"></i> Trenutna lokacija</div>
+                    <div class="map" id="currentLocation"></div>
+                </div>
+            </div>
+            <div class="divide right">
+                <div class="card">
+                    <div class="header indigo"><i class="icon-compass"></i> Prevožene poti</div>
+                    <div class="map" id="drivenPath"></div>
+                    <div class="search">
+                        <i class='icon-magnifier'></i>
+                        <input type="text" name='pathSearch' placeholder='Iskanje'/>
+                    </div>
+                    <div class="table" id="drivenPathTable">
+                        <div class="row th">
+                            <div class="col">Datum</div>
+                            <div class="col">Začetek</div>
+                            <div class="col">Konec</div>
+                            <div class="col center">Prikaži</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card iframe">
+                    <div class="header indigo"><i class="icon-map"></i> Trenutna pot</div>
+                    <iframe src="http://www.brianfolts.com/driver/#origin=Vrbanska+Cesta+12b%2C+2000+Maribor%2C+Slovenija&amp;destination=Partizanska+cesta+12%2C+2000+Maribor%2C+Slovenija&amp;fps=1&amp;travelmode=BICYCLING&amp;rn=" scrolling="no" id="driving"></iframe>
+                </div>
+                <div class="card">
+                    <div class="header indigo"><i class="icon-shield"></i> Zgodovina napak</div>
+                    <ul>
+                        <li><button class="icon small red"></button><div class="key">Padec temperature motorja</div><div class="value">Pred 3 dnevi</div></li>
+                        <li><button class="icon small green"></button><div class="key">Napaka menjalnika</div><div class="value">Pred 2 mescoma</div></li>
+                        <li><button class="icon small green"></button><div class="key">Napaka sklopke</div><div class="value">Pred 5 mesci</div></li>
+                        <li><button class="icon small green"></button><div class="key">Prazen akumulator</div><div class="value">Pred 4 leti</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/nav.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/iframe.js"></script>
+    <script src="js/table.js"></script>
 </body>
 </html>
