@@ -44,21 +44,13 @@
                 <div class="card">
                     <div class="header indigo"><i class="icon-graph"></i> Stanje vozila</div>
                     <ul>
-                        <li th:each="item : ${params}"><button class="icon blue"><i class="icon-chemistry"></i></button><div class="key" th:text="${item.key}"></div><div class="value" th:text="${item.value}"></div></li>
-                        <li><button class="icon blue"><i class="icon-speedometer"></i></button><div class="key">Temperatura motorja</div><div class="value ok"><i class="icon-check"></i></div></li>
-                        <li><button class="icon blue"><i class="icon-chemistry"></i></button><div class="key">Stanje olja</div><div class="value warning"><i class="icon-check"></i></div></li>
-                        <li><button class="icon blue"><i class="icon-support"></i></button><div class="key">Tlak v pnevmatikah</div><div class="value error"><i class="icon-close"></i></div></li>
-                        <li><button class="icon blue"><i class="icon-clock"></i></button><div class="key">Nazadnje uporabljeno</div><div class="value">Pred 4 minutami</div></li>
+                        <li th:each="item : ${params}"><button class="icon blue"><i class="icon-chemistry"></i></button><div class="key" th:text="${item.key}"></div><div class="value" th:text="${#numbers.formatDecimal(item.value, 0, 'COMMA', 2, 'POINT')}"></div></li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="header indigo"><i class="icon-location-pin"></i> Trenutna lokacija</div>
                     <div class="map" id="currentLocation"></div>
                 </div>
-                <!--<div class="cardHolder">
-                    <div class="divide left"><div class="card">Test</div></div>
-                    <div class="divide right"><div class="card">Test</div></div>
-                </div>-->
             </div>
             <div class="divide right">
                 <div class="card">
@@ -93,10 +85,6 @@
             </div>
         </div>
     </main>
-    <ul>
-        <li>Latitude: <span th:text="${location.lat}"></span></li>
-        <li>Longitude: <span th:text="${location.lon}"></span></li>
-    </ul>
     <script src="js/nav.js"></script>
     <script src="js/maps.js"></script>
     <script src="js/iframe.js"></script>
