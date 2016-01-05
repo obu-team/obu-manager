@@ -544,6 +544,10 @@ main .container .divide.right {
     height: 542px;
 }
 
+.card.iframe.min {
+    height:48px;
+}
+
 .card .header {
     width:100%;
     padding:15px;
@@ -558,6 +562,10 @@ main .container .divide.right {
     -moz-box-sizing:border-box;
     -o-box-sizing:border-box;
     box-sizing:border-box;
+}
+
+.card.iframe .header {
+    cursor: pointer;
 }
 
 .card .header i {

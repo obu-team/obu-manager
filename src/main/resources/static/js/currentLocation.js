@@ -47,4 +47,8 @@ $(function() {
 			});
 		}
 	});
+
+	$(".header",$(".card.iframe")).click(function() {
+		$(this).parent().toggleClass('min');
+	});
 })
