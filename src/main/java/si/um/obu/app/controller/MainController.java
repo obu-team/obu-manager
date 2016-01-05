@@ -4,15 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import si.um.obu.app.model.Message;
 import si.um.obu.app.model.Token;
+import si.um.obu.app.model.Track;
 import si.um.obu.app.service.OBUService;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -56,7 +55,6 @@ public class MainController {
     public String homeView(@PathVariable("obuId") String OBUId, Model model) {
         model.addAttribute("location", obuService.getOBULocation(OBUId));
         model.addAttribute("params", obuService.getCarParamterValues(OBUId));
-        model.addAttribute("driveHistory", obuService.getCarDriveHistory(OBUId));
         return "home-view";
     }
 
@@ -65,6 +63,12 @@ public class MainController {
         model.addAttribute("trackId", trackId);
         model.addAttribute("obuId", OBUId);
         return "route-view";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{obuId}/driveHistory", method = RequestMethod.GET)
+    public List<Track> getCarDriveHistory(@PathVariable("obuId") String OBUId) {
+        return obuService.getCarDriveHistory(OBUId);
     }
 
 }
