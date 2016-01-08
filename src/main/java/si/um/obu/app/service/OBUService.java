@@ -38,4 +38,12 @@ public class OBUService {
         return response.getTracks();
     }
 
+    public GeoLocation getCarDestination(String OBUId) {
+        return restTemplate.getForObject(OBU_API_URL + OBUId + "/currentTrackEndLocation", GeoLocation.class);
+    }
+
+    public List<CarError> getCarErrors(String OBUId) {
+        return restTemplate.getForObject(OBU_API_URL + OBUId + "/carErrors", List.class);
+    }
+
 }

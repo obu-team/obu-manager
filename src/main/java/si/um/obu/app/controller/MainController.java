@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import si.um.obu.app.model.GeoLocation;
-import si.um.obu.app.model.Message;
-import si.um.obu.app.model.Token;
-import si.um.obu.app.model.Track;
+import si.um.obu.app.model.*;
 import si.um.obu.app.service.OBUService;
 
 import javax.validation.Valid;
@@ -71,4 +68,15 @@ public class MainController {
         return obuService.getOBULocation(OBUId);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/{obuId}/destination", method = RequestMethod.GET)
+    public GeoLocation getCarDestination(@PathVariable("obuId") String OBUId) {
+        return obuService.getCarDestination(OBUId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{obuId}/error", method = RequestMethod.GET)
+    public List<CarError> getCarErrors(@PathVariable("obuId") String OBUId) {
+        return obuService.getCarErrors(OBUId);
+    }
 }
