@@ -25,6 +25,12 @@ $(function() {
             });
         },
         function(cb) {
+            if(historyRes.length>10) {
+                historyRes = _.first(historyRes,10);
+            }
+            cb();
+        },
+        function(cb) {
             async.forEach(historyRes,function(path,clb) {
                 if(path.trackPoints.length<2) {
                     return clb();
