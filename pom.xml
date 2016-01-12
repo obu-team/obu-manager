@@ -78,6 +78,14 @@
                         </configuration>
                     </plugin>
                 </plugins>
+                <resources>
+                    <resource>
+                        <directory>.</directory>
+                        <includes>
+                            <include>*.yml</include>
+                        </includes>
+                    </resource>
+                </resources>
             </build>
         </profile>
 
@@ -101,6 +109,14 @@
                         </configuration>
                     </plugin>
                 </plugins>
+                <resources>
+                    <resource>
+                        <directory>.</directory>
+                        <includes>
+                            <include>*.yml</include>
+                        </includes>
+                    </resource>
+                </resources>
             </build>
         </profile>
 
@@ -127,6 +143,14 @@
                         </configuration>
                     </plugin>
                 </plugins>
+                <resources>
+                    <resource>
+                        <directory>.</directory>
+                        <includes>
+                            <include>*.yml</include>
+                        </includes>
+                    </resource>
+                </resources>
             </build>
         </profile>
     </profiles>
