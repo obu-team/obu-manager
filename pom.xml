@@ -6,7 +6,7 @@
 	<groupId>si.um.obu.app</groupId>
 	<artifactId>obu-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>OBU app</name>
 	<description>OBU dashboard app</description>
