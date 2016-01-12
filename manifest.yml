@@ -1,5 +1,5 @@
 applications:
-- name: oburer-war
+- name: obu-app
   memory: 512M
   instances: 1
   path: ./target/obu-app-0.0.1-SNAPSHOT.war
