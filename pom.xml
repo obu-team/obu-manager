@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -78,14 +78,6 @@
                         </configuration>
                     </plugin>
                 </plugins>
-                <resources>
-                    <resource>
-                        <directory>.</directory>
-                        <includes>
-                            <include>*.yml</include>
-                        </includes>
-                    </resource>
-                </resources>
             </build>
         </profile>
 
@@ -109,14 +101,6 @@
                         </configuration>
                     </plugin>
                 </plugins>
-                <resources>
-                    <resource>
-                        <directory>.</directory>
-                        <includes>
-                            <include>*.yml</include>
-                        </includes>
-                    </resource>
-                </resources>
             </build>
         </profile>
 
@@ -143,14 +127,6 @@
                         </configuration>
                     </plugin>
                 </plugins>
-                <resources>
-                    <resource>
-                        <directory>.</directory>
-                        <includes>
-                            <include>*.yml</include>
-                        </includes>
-                    </resource>
-                </resources>
             </build>
         </profile>
     </profiles>
